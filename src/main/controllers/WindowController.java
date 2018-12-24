@@ -42,6 +42,13 @@ public class WindowController {
         return (NotesController) openNewWindow("notesMenu.fxml", "Notes");
     }
 
+    public static void displayInformation(String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(content);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+
     public static boolean displayConfirmation(String question) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText(question);

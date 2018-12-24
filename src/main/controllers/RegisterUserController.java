@@ -37,8 +37,7 @@ public class RegisterUserController implements Initializable {
             userToRegister.validateUser();
             LOGGER.info("User was validated");
             DatabaseController.registerValidatedUser(userToRegister);
-            LOGGER.info("User was added to database.");
-            // If code reaches this statement a valid user was added to the Database.
+            WindowController.displayInformation("User registered successfully.");
             LOGGER.info("New user added:" +
                     "\nName: " + userToRegister.getName() +
                     "\nUsername: " + userToRegister.getUsername() +
@@ -56,14 +55,15 @@ public class RegisterUserController implements Initializable {
 
     @FXML
     void cancelCreateAccount() {
-        // TODO: 20/12/2018 Confirm is user wants to cancel operation
-        LOGGER.info("Returning to login");
-        try {
-            WindowController.openLoginWindow();
-            closeCurrentWindow();
-        } catch (IOException e) {
-            LOGGER.warning("Failed to open window");
-            e.printStackTrace();
+        if (WindowController.displayConfirmation
+                ("Are you sure you want to cancel the operation?")) {
+            try {
+                WindowController.openLoginWindow();
+                closeCurrentWindow();
+            } catch (IOException e) {
+                LOGGER.warning("Failed to open window");
+                e.printStackTrace();
+            }
         }
     }
 
