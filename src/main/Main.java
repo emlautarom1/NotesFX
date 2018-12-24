@@ -16,11 +16,11 @@ public class Main extends Application {
         try {
             int nextValidID = DatabaseController.getNextNoteValidID();
             Note.setIdGenerator(nextValidID);
+            WindowController.openLoginWindow();
         } catch (SQLException e) {
-            // TODO: 23/12/2018 Display SQL fatal failure
+            WindowController.displayError("Fatal App failure. Closing app...");
             Platform.exit();
         }
-        WindowController.openLoginWindow();
     }
 
     public static void main(String[] args) {
