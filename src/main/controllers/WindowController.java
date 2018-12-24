@@ -49,4 +49,11 @@ public class WindowController {
         alert.showAndWait();
         return (alert.getResult() == ButtonType.OK);
     }
+
+    public static void displayError(String content){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(content);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
 }
