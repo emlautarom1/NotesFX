@@ -165,6 +165,7 @@ public class NotesController implements Initializable {
 
     private Optional<String> displayNewNoteDialog() {
         TextInputDialog dialog = new TextInputDialog();
+        WindowController.styleDialog(dialog);
         dialog.setTitle("New Note");
         dialog.setHeaderText("Create a new Note");
         dialog.setContentText("Please enter your note:");

@@ -5,6 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 import main.Main;
 
@@ -34,7 +36,7 @@ public class WindowController {
         return (LoginController) openNewWindow("loginMenu.fxml", "Login");
     }
 
-    public static RegisterUserController openRegisterUserWindow() throws IOException{
+    public static RegisterUserController openRegisterUserWindow() throws IOException {
         return (RegisterUserController) openNewWindow("registerNewUserMenu.fxml", "Register User");
     }
 
@@ -44,6 +46,7 @@ public class WindowController {
 
     public static void displayInformation(String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        styleDialog(alert);
         alert.setContentText(content);
         alert.setHeaderText(null);
         alert.showAndWait();
@@ -51,16 +54,26 @@ public class WindowController {
 
     public static boolean displayConfirmation(String question) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        styleDialog(alert);
         alert.setContentText(question);
         alert.setHeaderText(null);
         alert.showAndWait();
         return (alert.getResult() == ButtonType.OK);
     }
 
-    public static void displayError(String content){
+    public static void displayError(String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        styleDialog(alert);
         alert.setContentText(content);
         alert.setHeaderText(null);
         alert.showAndWait();
+    }
+
+    public static void styleDialog(Dialog dialog) {
+        DialogPane dialogPane = dialog.getDialogPane();
+        dialogPane.getStylesheets().add(
+                Main.class.getResource("style/bootstrap2.css").toExternalForm()
+        );
+        dialogPane.getStyleClass().add("myDialog");
     }
 }
