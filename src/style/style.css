@@ -1,0 +1,21 @@
+@font-face {
+    src: url('../assets/Aleo-Bold.ttf');
+}
+
+.logo {
+    -fx-font-family: "Aleo";
+    -fx-font-size: 40;
+}
+
+/*
+Font family name must be the same as file font name
+By example: to use the font “Birds of Paradis” contained on the file demo.ttf. I have to use this CSS file :
+
+@font-face {
+    src: url(“/ui/font/demo.ttf”);
+}
+
+.label {
+    -fx-font-family: “Birds of Paradise”;
+}
+*/
