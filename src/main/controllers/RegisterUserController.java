@@ -46,9 +46,11 @@ public class RegisterUserController implements Initializable {
             WindowController.openLoginWindow();
             closeCurrentWindow();
         } catch (SQLException e) {
-            // TODO: 17/12/2018 Create DialogBox with SQL error
+            WindowController.displayError("SQL Error: Failed to register a new User.");
+            e.printStackTrace();
         } catch (Exception e) {
-            // TODO: 17/12/2018 Create DialogBox with validation error
+            WindowController.displayError
+                    ("Validation Error: Username/Password are not valid. Use at least 8 characters.");
         }
 
     }

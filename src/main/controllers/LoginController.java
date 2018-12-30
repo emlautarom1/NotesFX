@@ -50,7 +50,6 @@ public class LoginController implements Initializable {
             LOGGER.warning("Failed to open window");
             e.printStackTrace();
         }
-
     }
 
     @FXML
@@ -59,6 +58,7 @@ public class LoginController implements Initializable {
             WindowController.openRegisterUserWindow();
         } catch (IOException e) {
             LOGGER.warning("Failed to open window");
+            e.printStackTrace();
         }
         closeCurrentWindow();
     }

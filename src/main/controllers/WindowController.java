@@ -3,10 +3,7 @@ package main.controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import main.Main;
 
@@ -36,15 +33,15 @@ public class WindowController {
         return (LoginController) openNewWindow("loginMenu.fxml", "Login");
     }
 
-    public static RegisterUserController openRegisterUserWindow() throws IOException {
+    static RegisterUserController openRegisterUserWindow() throws IOException {
         return (RegisterUserController) openNewWindow("registerNewUserMenu.fxml", "Register User");
     }
 
-    public static NotesController openNotesWindow() throws IOException {
+    static NotesController openNotesWindow() throws IOException {
         return (NotesController) openNewWindow("notesMenu.fxml", "Notes");
     }
 
-    public static void displayInformation(String content) {
+    static void displayInformation(String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         styleDialog(alert);
         alert.setContentText(content);
@@ -52,7 +49,7 @@ public class WindowController {
         alert.showAndWait();
     }
 
-    public static boolean displayConfirmation(String question) {
+    static boolean displayConfirmation(String question) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         styleDialog(alert);
         alert.setContentText(question);
@@ -69,11 +66,15 @@ public class WindowController {
         alert.showAndWait();
     }
 
-    public static void styleDialog(Dialog dialog) {
+    static void styleDialog(Dialog dialog) {
         DialogPane dialogPane = dialog.getDialogPane();
         dialogPane.getStylesheets().add(
                 Main.class.getResource("style/bootstrap2.css").toExternalForm()
         );
         dialogPane.getStyleClass().add("myDialog");
+    }
+
+    static void higlightInvalidInput(TextField field) {
+        field.setStyle("-fx-border-color: red");
     }
 }

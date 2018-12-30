@@ -100,6 +100,7 @@ public class NotesController implements Initializable {
             try {
                 insertNoteAndUpdateView(noteText);
             } catch (SQLException e) {
+                WindowController.displayError("SQL Failure: Failed to insert your Note.");
                 LOGGER.warning("Failed to insert note");
             }
         });
@@ -115,6 +116,7 @@ public class NotesController implements Initializable {
                 deleteNoteAndUpdateView(selectedNote);
                 LOGGER.info("Deleting note: " + selectedNote.getNote() + " with ID: " + selectedNote.getId());
             } catch (SQLException e) {
+                WindowController.displayError("SQL Failure: Could not delete your Note.");
                 LOGGER.warning("Failed to delete note: " + selectedNote.getNote() + " with ID: " + selectedNote.getId());
                 e.printStackTrace();
             }
@@ -131,6 +133,7 @@ public class NotesController implements Initializable {
             try {
                 updateNoteAndUpdateView(selectedNote, newNoteContent.get());
             } catch (SQLException e) {
+                WindowController.displayError("SQL Error: Failed to update your Note.");
                 LOGGER.warning("Failed to update note: " + selectedNote.getNote() + " with ID: " + selectedNote.getId());
             }
         }
@@ -160,7 +163,7 @@ public class NotesController implements Initializable {
 
     @FXML
     private void displayVersionInfo() {
-        LOGGER.info("Display version info");
+        WindowController.displayInformation("Notes-FX: Version 1.0.\nBuilt in Java 8 + JavaFX.\nArgentina.");
     }
 
     private Optional<String> displayNewNoteDialog() {
@@ -182,7 +185,6 @@ public class NotesController implements Initializable {
 
     private void userIsLoaded() {
         loadNotesToTable();
-        // TODO: 19/12/2018 Display user that notes where loaded.
         LOGGER.info("Notes for user " + getUser().getUsername() + " where loaded.");
     }
 
@@ -238,6 +240,7 @@ public class NotesController implements Initializable {
                     DatabaseController.getNotesFromUser(getUser().getUsername())
             );
         } catch (SQLException e) {
+            WindowController.displayError("SQL Error: Failed to retrieve Notes from SQL Database.");
             LOGGER.warning("Failed to retrieve Notes from SQL Database.");
         }
     }

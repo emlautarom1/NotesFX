@@ -85,7 +85,6 @@ public class DatabaseController {
                 prepareStatement("INSERT INTO USERS VALUES(?,?,?)");
         statement.setString(1, user.getUsername());
         statement.setString(2, user.getName());
-        // TODO: 18/12/2018 Password salting?
         statement.setString(3, user.getPassword());
 
         statement.execute();
