@@ -42,9 +42,11 @@ public class LoginController implements Initializable {
             notesController.setUser(autenticatedUser);
             closeCurrentWindow();
         } catch (SecurityException e) {
+            WindowController.higlightInvalidInput(password_field);
             LOGGER.warning("The password is invalid");
             // TODO: 19/12/2018 Inform user of wrong validation
         } catch (SQLException e) {
+            WindowController.higlightInvalidInput(username_field);
             LOGGER.warning("Failed to retrieve user from SQL Database");
         } catch (IOException e) {
             LOGGER.warning("Failed to open window");
