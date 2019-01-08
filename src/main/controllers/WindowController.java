@@ -20,13 +20,15 @@ public class WindowController {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("layouts/" + layout));
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
+        Controller controller = fxmlLoader.getController();
+        controller.setCurrentStage(stage);
         stage.setTitle(title);
         stage.setScene(new Scene(root));
         // Force FXML min sizes (width/height)
         stage.setMinWidth(root.minWidth(-1));
         stage.setMinHeight(root.minHeight(-1));
         stage.show();
-        return fxmlLoader.getController();
+        return controller;
     }
 
     public static LoginController openLoginWindow() throws IOException {

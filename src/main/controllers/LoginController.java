@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import main.entities.User;
 
 import java.io.IOException;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-public class LoginController implements Initializable {
+public class LoginController extends Controller implements Initializable {
 
     // Logger
     // More info: http://www.vogella.com/tutorials/Logging/article.html
@@ -63,11 +62,6 @@ public class LoginController implements Initializable {
             e.printStackTrace();
         }
         closeCurrentWindow();
-    }
-
-    private void closeCurrentWindow() {
-        Stage current = (Stage) username_field.getScene().getWindow();
-        current.close();
     }
 
 }

@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import main.entities.User;
 
 import java.io.IOException;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-public class RegisterUserController implements Initializable {
+public class RegisterUserController extends Controller implements Initializable {
     private static final Logger LOGGER = Logger.getLogger(RegisterUserController.class.getName());
 
     @FXML
@@ -67,11 +66,6 @@ public class RegisterUserController implements Initializable {
                 e.printStackTrace();
             }
         }
-    }
-
-    private void closeCurrentWindow() {
-        Stage current = (Stage) name_field.getScene().getWindow();
-        current.close();
     }
 
     @Override

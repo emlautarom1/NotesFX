@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import main.entities.Note;
 import main.entities.User;
 import main.utils.CustomDateFormat;
@@ -23,7 +22,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-public class NotesController implements Initializable {
+public class NotesController extends Controller implements Initializable {
     // For DialogBox check: https://code.makery.ch/blog/javafx-dialogs-official/
     // For observable filtered list check: https://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
 
@@ -264,10 +263,5 @@ public class NotesController implements Initializable {
         DatabaseController.updateNote(note);
         noteObservableList.add(note);
         notes_table.refresh();
-    }
-
-    private void closeCurrentWindow() {
-        Stage current = (Stage) notes_table.getScene().getWindow();
-        current.close();
     }
 }
