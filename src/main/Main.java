@@ -11,11 +11,15 @@ import java.sql.SQLException;
 
 public class Main extends Application {
 
+    private void initNotesID() throws SQLException {
+        int nextValidID = DatabaseController.getNextNoteValidID();
+        Note.setIdGenerator(nextValidID);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            int nextValidID = DatabaseController.getNextNoteValidID();
-            Note.setIdGenerator(nextValidID);
+            initNotesID();
             WindowController.openLoginWindow();
         } catch (SQLException e) {
             WindowController.displayError("Fatal App failure. Closing app...");
