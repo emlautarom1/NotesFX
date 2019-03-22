@@ -11,7 +11,7 @@ For more info check: https://github.com/dicolar/jbootx
 
 This project uses `Gradle` as build, test and dependency management system.
 
-## How to Build:
+## How to Build and Run:
 
 For building and running the project run:
 
@@ -20,19 +20,17 @@ For building and running the project run:
     $> gradle run
 ```
 
-## Standalone usage:
+## Usage:
 
-```powershell
-    $> gradle fatJar
-    $> mv .\build\libs\Notes_FX.jar
-    $> java -jar Notes_FX.jar
-```
-
-You can also zip `notes.db` and `Notes_FX.jar` together and release it as a standalone cross-platform application.
-
-## Username and password:
+- Get the latest release from the `Releases`.
+- Extract `Notes_FX.zip` file and go to `Notes_FX/bin`.
+- Run `Notes_FX.bat`.
 
 Default username and password are `lautaroem1` and `MYPASSWORD`
+
+## Custom User distributions:
+
+After running `gradle build` you can get your own `distribution` on `build/distributions`. Extract one of the compressed files and copy the generated `notes.db` to your `Notes_FX/bin` folder, otherwise there will be no default user.
 
 ## Images:
 

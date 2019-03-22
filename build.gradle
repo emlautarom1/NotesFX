@@ -19,14 +19,16 @@ dependencies {
     // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
     compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
 
-    // Fat Jar dependencies for cross platform
-    compileOnly "org.openjfx:javafx-graphics:$javafx.version:win"
-    compileOnly "org.openjfx:javafx-graphics:$javafx.version:linux"
-    compileOnly "org.openjfx:javafx-graphics:$javafx.version:mac"
 }
 
 javafx {
     modules = [ 'javafx.controls', 'javafx.fxml']
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'main.Main'
+    }
 }
 
 task copyAssets(type: Copy) {
@@ -44,16 +46,6 @@ task copyAssets(type: Copy) {
         from "src/main/java/main/style"
         into "build/classes/java/main/main/style/"
     }
-}
-
-task fatJar(type: Jar){    
-    manifest {
-        attributes 'Main-Class': 'main.Main'
-    }
-    from {
-        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-    with jar
 }
 
 mainClassName = 'main.Main'
