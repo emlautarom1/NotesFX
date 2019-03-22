@@ -22,13 +22,15 @@ For building and running the project run:
 
 ## Usage:
 
-- Get the latest release from the `Releases`.
+- If you are using Windows, get the latest release from the `Releases` tab.
 - Extract `Notes_FX.zip` file and go to `Notes_FX/bin`.
 - Run `Notes_FX.bat`.
 
 Default username and password are `lautaroem1` and `MYPASSWORD`
 
 ## Custom User distributions:
+
+**If you are running MacOS / Linux, you'll have to build your own distribution.**
 
 After running `gradle build` you can get your own `distribution` on `build/distributions`. Extract one of the compressed files and copy the generated `notes.db` to your `Notes_FX/bin` folder, otherwise there will be no default user.
 
