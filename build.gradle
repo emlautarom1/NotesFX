@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    // This dependency is found on compile classpath of this component and consumers.
+    implementation 'com.google.guava:guava:26.0-jre'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
+
+    // Fat Jar dependencies for cross platform
+    compileOnly "org.openjfx:javafx-graphics:$javafx.version:win"
+    compileOnly "org.openjfx:javafx-graphics:$javafx.version:linux"
+    compileOnly "org.openjfx:javafx-graphics:$javafx.version:mac"
+}
+
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml']
+}
+
+task copyAssets(type: Copy) {
+    copy {
+        from "src/main/java/main/assets"
+        into "build/classes/java/main/main/assets"
+    }
+
+    copy {
+        from "src/main/java/main/layouts"
+        into "build/classes/java/main/main/layouts"
+    }
+
+    copy {
+        from "src/main/java/main/style"
+        into "build/classes/java/main/main/style/"
+    }
+}
+
+task fatJar(type: Jar){    
+    manifest {
+        attributes 'Main-Class': 'main.Main'
+    }
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+}
+
+mainClassName = 'main.Main'
+build.finalizedBy(copyAssets)

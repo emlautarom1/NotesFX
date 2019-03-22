@@ -162,7 +162,7 @@ public class NotesController extends Controller implements Initializable {
 
     @FXML
     private void displayVersionInfo() {
-        WindowController.displayInformation("Notes-FX: Version 1.0.\nBuilt in Java 8 + JavaFX.\nArgentina.");
+        WindowController.displayInformation("Notes-FX: Version 1.2.\nBuilt in 11 + JavaFX.\nArgentina.");
     }
 
     private Optional<String> displayNewNoteDialog() {

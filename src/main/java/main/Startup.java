@@ -9,7 +9,7 @@ import main.entities.Note;
 
 import java.sql.SQLException;
 
-public class Main extends Application {
+public class Startup extends Application {
 
     private void initNotesID() throws SQLException {
         int nextValidID = DatabaseController.getNextNoteValidID();

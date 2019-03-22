@@ -1,15 +1,14 @@
-package main.tests;
+package To_Do_FX;
 
 import main.entities.User;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
-
-class UserTest {
+public class UserTest {
 
     @Test
-    void invalid_name() {
+    public void invalid_name() {
         User u = new User("INV", "VALIDINPUT", "VALIDINPUT");
         try {
             u.validateUser();
@@ -20,7 +19,7 @@ class UserTest {
     }
 
     @Test
-    void invalid_username() {
+    public void invalid_username() {
         User u = new User("VALIDINPUT", "INV", "VALIDINPUT");
         try {
             u.validateUser();
@@ -31,7 +30,7 @@ class UserTest {
     }
 
     @Test
-    void invalid_password() {
+    public void invalid_password() {
         User u = new User("VALIDINPUT", "VALIDINPUT", "INV");
         try {
             u.validateUser();

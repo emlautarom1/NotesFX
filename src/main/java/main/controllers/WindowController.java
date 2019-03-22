@@ -52,7 +52,7 @@ public class WindowController {
     }
 
     static boolean displayConfirmation(String question) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        var alert = new Alert(Alert.AlertType.CONFIRMATION);
         styleDialog(alert);
         alert.setContentText(question);
         alert.setHeaderText(null);

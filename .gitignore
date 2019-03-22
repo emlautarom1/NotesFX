@@ -1,3 +1,11 @@
-idea/*
-*.jar
+.gradle
+.classpath
+.project
+.settings
+.vscode
+build
+bin
+gradlew
+gradlew.bat
 *.db
+*.jar

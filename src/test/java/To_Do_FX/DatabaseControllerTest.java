@@ -1,37 +1,34 @@
-package main.tests;
+package To_Do_FX;
 
 import main.controllers.DatabaseController;
 import main.entities.Note;
 import main.entities.User;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
-
-class DatabaseControllerTest {
+public class DatabaseControllerTest {
     private static final String TEST_USERNAME = "lautaroem1";
     private static final String TEST_NAME = "LAUTARO EMANUEL";
     private static final String TEST_PASSWORD = "MYPASSWORD";
 
     @Test
-    void create_database_and_tables() {
+    public void create_database_and_tables() {
         try {
             Connection c = DatabaseController.getConnection();
-            DatabaseMetaData metaData = c.getMetaData();
-            ResultSet dbTables = metaData.getTables(null, null, "%", null);
+            ResultSet dbTables = c.createStatement().executeQuery("SELECT name FROM sqlite_master WHERE type='table';");
             List<String> tableNames = new ArrayList<>();
             while (dbTables.next()) {
-                tableNames.add(dbTables.getString(3));
+                tableNames.add(dbTables.getString(1));
             }
-            List<String> expectedTables = Arrays.asList("NOTES", "USERS");
+            List<String> expectedTables = Arrays.asList("USERS", "NOTES", "sqlite_sequence");
             assertEquals(expectedTables, tableNames);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,7 +37,7 @@ class DatabaseControllerTest {
     }
 
     @Test
-    void insert_validated_user_into_database() {
+    public void insert_validated_user_into_database() {
         User test = new User(TEST_NAME, TEST_USERNAME, TEST_PASSWORD);
         try {
             DatabaseController.registerValidatedUser(test);
@@ -51,7 +48,7 @@ class DatabaseControllerTest {
     }
 
     @Test
-    void insert_note_into_database() {
+    public void insert_note_into_database() {
         // User should be already in database
         try {
             Note.setIdGenerator(DatabaseController.getNextNoteValidID());
@@ -63,7 +60,7 @@ class DatabaseControllerTest {
     }
 
     @Test
-    void get_notes_from_test_user() {
+    public void get_notes_from_test_user() {
         try {
             List<Note> queryNoteList = DatabaseController.getNotesFromUser(TEST_USERNAME);
             if (queryNoteList != null && !queryNoteList.isEmpty()) {
@@ -80,7 +77,7 @@ class DatabaseControllerTest {
     }
 
     @Test
-    void get_user() {
+    public void get_user() {
         try {
             User result = DatabaseController.getUser(TEST_USERNAME);
             assertEquals(TEST_NAME, result.getName());
@@ -93,7 +90,7 @@ class DatabaseControllerTest {
     }
 
     @Test
-    void update_note_content() {
+    public void update_note_content() {
         try {
             Note.setIdGenerator(DatabaseController.getNextNoteValidID());
             Note n = new Note("Modify this note!", TEST_USERNAME);
