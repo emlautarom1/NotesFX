@@ -24,11 +24,11 @@ For building and running the project run:
 
 ```powershell
     $> gradle fatJar
-    $> mv .\build\libs\To_Do_FX.jar
-    $> java -jar To_Do_FX.jar
+    $> mv .\build\libs\Notes_FX.jar
+    $> java -jar Notes_FX.jar
 ```
 
-You can also zip `notes.db` and `To_Do_FX.jar` together and release it as a standalone cross-platform application.
+You can also zip `notes.db` and `Notes_FX.jar` together and release it as a standalone cross-platform application.
 
 ## Username and password:
 

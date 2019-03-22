@@ -1,4 +1,4 @@
-package To_Do_FX;
+package Notes_FX;
 
 import main.controllers.DatabaseController;
 import main.entities.Note;
