@@ -5,7 +5,5 @@
 .vscode
 build
 bin
-gradlew
-gradlew.bat
 *.db
 *.jar
