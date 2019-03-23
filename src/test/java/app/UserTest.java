@@ -1,7 +1,8 @@
-package Notes_FX;
+package app;
 
-import main.entities.User;
+import app.entities.User;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 

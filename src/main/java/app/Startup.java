@@ -1,11 +1,11 @@
-package main;
+package app;
 
+import app.controllers.DatabaseController;
+import app.controllers.WindowController;
+import app.entities.Note;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import main.controllers.DatabaseController;
-import main.controllers.WindowController;
-import main.entities.Note;
 
 import java.sql.SQLException;
 

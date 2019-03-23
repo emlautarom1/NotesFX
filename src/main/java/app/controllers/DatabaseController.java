@@ -1,7 +1,7 @@
-package main.controllers;
+package app.controllers;
 
-import main.entities.Note;
-import main.entities.User;
+import app.entities.Note;
+import app.entities.User;
 
 import java.sql.*;
 import java.util.ArrayList;

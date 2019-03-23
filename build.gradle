@@ -4,21 +4,18 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.7'
 }
 
+group 'lautaroem1'
+version '1.0-SNAPSHOT'
+
 repositories {
-    jcenter()
     mavenCentral()
 }
 
 dependencies {
-    // This dependency is found on compile classpath of this component and consumers.
-    implementation 'com.google.guava:guava:26.0-jre'
-
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 
     // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
     compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
-
 }
 
 javafx {
@@ -27,26 +24,8 @@ javafx {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'main.Main'
+        attributes 'Main-Class': 'app.Main'
     }
 }
 
-task copyAssets(type: Copy) {
-    copy {
-        from "src/main/java/main/assets"
-        into "build/classes/java/main/main/assets"
-    }
-
-    copy {
-        from "src/main/java/main/layouts"
-        into "build/classes/java/main/main/layouts"
-    }
-
-    copy {
-        from "src/main/java/main/style"
-        into "build/classes/java/main/main/style/"
-    }
-}
-
-mainClassName = 'main.Main'
-build.finalizedBy(copyAssets)
+mainClassName = 'app.Main'

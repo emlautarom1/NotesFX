@@ -1,11 +1,11 @@
-package main.controllers;
+package app.controllers;
 
+import app.Startup;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import main.Main;
 
 import java.io.IOException;
 
@@ -13,11 +13,11 @@ public class WindowController {
     /**
      * @param layout layout file in .fxml
      * @param title  Tilte of the window to be created
-     * @return Object to be casted to a proper controller. Use to send information between controllers
+     * @return Object to be casted to a proper controller. Use to send information between app.controllers
      * @throws IOException if the window cannot be created.
      */
     private static Object openNewWindow(String layout, String title) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("layouts/" + layout));
+        FXMLLoader fxmlLoader = new FXMLLoader(Startup.class.getResource("layouts/" + layout));
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
         Controller controller = fxmlLoader.getController();
@@ -71,7 +71,7 @@ public class WindowController {
     static void styleDialog(Dialog dialog) {
         DialogPane dialogPane = dialog.getDialogPane();
         dialogPane.getStylesheets().add(
-                Main.class.getResource("style/bootstrap2.css").toExternalForm()
+                Startup.class.getResource("style/bootstrap2.css").toExternalForm()
         );
         dialogPane.getStyleClass().add("myDialog");
     }

@@ -1,11 +1,10 @@
-package Notes_FX;
+package app;
 
-import main.controllers.DatabaseController;
-import main.entities.Note;
-import main.entities.User;
+
+import app.controllers.DatabaseController;
+import app.entities.Note;
+import app.entities.User;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,6 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class DatabaseControllerTest {
     private static final String TEST_USERNAME = "lautaroem1";

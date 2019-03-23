@@ -1,4 +1,4 @@
-package main.entities;
+package app.entities;
 
 public class User {
     public static final String USER_LENGTH_ERROR = "USER LENGTH SHOULD BE 8 TO 255";

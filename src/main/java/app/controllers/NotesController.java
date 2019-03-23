@@ -1,5 +1,8 @@
-package main.controllers;
+package app.controllers;
 
+import app.entities.Note;
+import app.entities.User;
+import app.utils.CustomDateFormat;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -10,9 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import main.entities.Note;
-import main.entities.User;
-import main.utils.CustomDateFormat;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,7 +41,7 @@ public class NotesController extends Controller implements Initializable {
         return userObjectProperty().get();
     }
 
-    // Package-private set user. Other controllers can use this to set User.
+    // Package-private set user. Other app.controllers can use this to set User.
     final void setUser(User user) {
         userObjectProperty().setValue(user);
         // Once the user is set, call user is loaded.
@@ -190,7 +190,7 @@ public class NotesController extends Controller implements Initializable {
     private void setUpTableContent() {
         date_column.setCellValueFactory(new PropertyValueFactory<>("writeDate"));
         date_column.setCellFactory(
-                column -> new TableCell<Note, Date>() {
+                column -> new TableCell<>() {
                     @Override
                     protected void updateItem(Date item, boolean empty) {
                         super.updateItem(item, empty);
